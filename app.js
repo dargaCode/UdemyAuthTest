@@ -5,9 +5,13 @@
 
 var express = require('express');
 var app = express();
+var expressSession = require('express-session');
 var ejs = require('ejs');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var passport = require('passport');
+var localStrategy = require('passport-local');
+var passportLocalMongoose = require('passport-local-mongoose');
 
 // DEPENDENCIES - DATABASE MODELS
 
@@ -30,8 +34,17 @@ const DATABASE_MESSAGE = `Connected to database at ${DATABASE_URL}`;
 // SETTINGS
 
 app.set('view engine', 'ejs');
-app.use(bodyParser.urlencoded({extended: true}));
 ejs.delimiter = '?';
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(expressSession({
+  secret: 'once one time with the thing and the stuff',
+  resave: false,
+  saveUninitialized: false,
+}));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
 
 // VARIABLES
 
