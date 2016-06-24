@@ -39,11 +39,15 @@ ejs.delimiter = '?';
 
 // ROUTES
 
-  // ROUTE - ROOT
+  // Route - Root
 app.get('/', function(req,res) {
-  res.send(APP_NAME + ' root route');
+  res.render('home');
 });
 
+  // Route - Secret
+app.get('/secret', function(req, res) {
+  res.render('secret');
+});
 
 // FUNCTIONS
 
