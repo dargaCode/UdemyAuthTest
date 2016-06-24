@@ -1,0 +1,22 @@
+{
+  "name": "auth-test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dargaCode/UdemyAuthTest.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dargaCode/UdemyAuthTest/issues"
+  },
+  "homepage": "https://github.com/dargaCode/UdemyAuthTest#readme"
+}
