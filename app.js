@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
 
 // DEPENDENCIES - DATABASE MODELS
 
-
+const User = require('./models/user.js')
 
 // DEPENDENCIES - OTHER LOCAL SCRIPTS
 
