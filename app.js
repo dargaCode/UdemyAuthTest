@@ -62,6 +62,31 @@ app.get('/secret', function(req, res) {
   res.render('secret');
 });
 
+// ROUTES - REGISTRATION
+
+  // Registration Route - Index
+
+app.get('/register', function(req, res) {
+  res.render('register');
+});
+
+  // Registration Route - Create
+app.post('/register', function(req, res) {
+  const requestedUser = req.body.user;
+  const newUser = new User({username: requestedUser.username});
+  const newPassword = requestedUser.password;
+  User.register(newUser, newPassword, function(err, createdUser) {
+    if (err) {
+      console.log(err);
+      return res.render('register');
+    } else {
+      passport.authenticate('local')(req, res, function() {
+        res.redirect('/secret');
+      });
+    }
+  })
+});
+
 // FUNCTIONS
 
 function initialize() {
