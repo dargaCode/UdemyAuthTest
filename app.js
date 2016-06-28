@@ -11,7 +11,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
 var localStrategy = require('passport-local');
-var passportLocalMongoose = require('passport-local-mongoose');
+var passportLocalMongoose = require('passport-local-mongoose'); // only used by user.js - not actually neccessary here
 
 // DEPENDENCIES - DATABASE MODELS
 
