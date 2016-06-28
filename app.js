@@ -63,7 +63,7 @@ app.get('/', function(req,res) {
 });
 
   // Route - Secret
-app.get('/secret', function(req, res) {
+app.get('/secret', isLoggedIn, function(req, res) {
   res.render('secret');
 });
 
@@ -112,6 +112,14 @@ app.get('/logout', function(req, res){
 });
 
 // FUNCTIONS
+
+function isLoggedIn(req, res, next) {
+  if (req.isAuthenticated()) {
+    return next();
+  } else {
+    res.redirect('/login');
+  }
+}
 
 function initialize() {
   serverListen();
