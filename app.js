@@ -30,6 +30,8 @@ const SERVER_MESSAGE = `Serving ${APP_NAME} on port ${PORT}`;
 const DEFAULT_DATABASE_URL = `mongodb://localhost/${APP_NAME}`;
 const DATABASE_URL = process.env.DATABASE_URL || DEFAULT_DATABASE_URL;
 const DATABASE_MESSAGE = `Connected to database at ${DATABASE_URL}`;
+const DEFAULT_SESSION_SECRET = 'A super-secret secret';
+const SESSION_SECRET = process.env.SESSION_SECRET || DEFAULT_SESSION_SECRET;
 const REDIRECTS = {
   successRedirect: '/secret',
   failureRedirect: '/login',
@@ -41,7 +43,7 @@ app.set('view engine', 'ejs');
 ejs.delimiter = '?';
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(expressSession({
-  secret: 'once one time with the thing and the stuff',
+  secret: SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
 }));
