@@ -40,13 +40,13 @@ const REDIRECTS = {
 app.set('view engine', 'ejs');
 ejs.delimiter = '?';
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(expressSession({
   secret: 'once one time with the thing and the stuff',
   resave: false,
   saveUninitialized: false,
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
