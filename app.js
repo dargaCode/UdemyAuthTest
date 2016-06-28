@@ -103,6 +103,14 @@ app.post('/login', passport.authenticate('local', REDIRECTS), function(req, res)
 
 });
 
+// ROUTES - LOGOUT
+
+  // Log out Route
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
+});
+
 // FUNCTIONS
 
 function initialize() {
