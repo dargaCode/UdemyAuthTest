@@ -111,7 +111,7 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-// FUNCTIONS
+// MIDDLEWARE
 
 function isLoggedIn(req, res, next) {
   if (req.isAuthenticated()) {
@@ -120,6 +120,8 @@ function isLoggedIn(req, res, next) {
     res.redirect('/login');
   }
 }
+
+// FUNCTIONS
 
 function initialize() {
   serverListen();
