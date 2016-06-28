@@ -72,9 +72,8 @@ app.get('/register', function(req, res) {
 
   // Registration Route - Create
 app.post('/register', function(req, res) {
-  const requestedUser = req.body.user;
-  const newUser = new User({username: requestedUser.username});
-  const newPassword = requestedUser.password;
+  const newUser = new User({username: req.body.username});
+  const newPassword = req.body.password;
   User.register(newUser, newPassword, function(err, createdUser) {
     if (err) {
       console.log(err);
