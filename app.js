@@ -30,6 +30,10 @@ const SERVER_MESSAGE = `Serving ${APP_NAME} on port ${PORT}`;
 const DEFAULT_DATABASE_URL = `mongodb://localhost/${APP_NAME}`;
 const DATABASE_URL = process.env.DATABASE_URL || DEFAULT_DATABASE_URL;
 const DATABASE_MESSAGE = `Connected to database at ${DATABASE_URL}`;
+const REDIRECTS = {
+  successRedirect: '/secret',
+  failureRedirect: '/login',
+};
 
 // SETTINGS
 
@@ -43,6 +47,7 @@ app.use(expressSession({
   resave: false,
   saveUninitialized: false,
 }));
+passport.use(new localStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
@@ -84,6 +89,18 @@ app.post('/register', function(req, res) {
       });
     }
   })
+});
+
+// ROUTES - LOGIN
+
+  // Login Route - Form
+app.get('/login', function(req, res) {
+  res.render('login');
+});
+
+  // Login Route - Submit
+app.post('/login', passport.authenticate('local', REDIRECTS), function(req, res) {
+
 });
 
 // FUNCTIONS
