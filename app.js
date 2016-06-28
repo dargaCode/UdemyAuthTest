@@ -59,12 +59,14 @@ passport.deserializeUser(User.deserializeUser());
 
   // Route - Root
 app.get('/', function(req,res) {
-  res.render('home');
+  const userInfo = getUserInfo(req);
+  res.render('home', userInfo);
 });
 
   // Route - Secret
 app.get('/secret', isLoggedIn, function(req, res) {
-  res.render('secret');
+  const userInfo = getUserInfo(req);
+  res.render('secret', userInfo);
 });
 
 // ROUTES - REGISTRATION
@@ -72,7 +74,8 @@ app.get('/secret', isLoggedIn, function(req, res) {
   // Registration Route - Index
 
 app.get('/register', function(req, res) {
-  res.render('register');
+  const userInfo = getUserInfo(req);
+  res.render('register', userInfo);
 });
 
   // Registration Route - Create
@@ -82,7 +85,8 @@ app.post('/register', function(req, res) {
   User.register(newUser, newPassword, function(err, createdUser) {
     if (err) {
       console.log(err);
-      return res.render('register');
+      const userInfo = getUserInfo(req);
+      return res.render('register', userInfo);
     } else {
       passport.authenticate('local')(req, res, function() {
         res.redirect('/secret');
@@ -95,7 +99,8 @@ app.post('/register', function(req, res) {
 
   // Login Route - Form
 app.get('/login', function(req, res) {
-  res.render('login');
+  const userInfo = getUserInfo(req);
+  res.render('login', userInfo);
 });
 
   // Login Route - Submit
@@ -122,6 +127,16 @@ function isLoggedIn(req, res, next) {
 }
 
 // FUNCTIONS
+
+function getUserInfo(req) {
+  const loggedIn = req.isAuthenticated();
+  const username = loggedIn ? req.user.username : null;
+
+  return {
+    loggedIn : loggedIn,
+    username : username,
+  };
+}
 
 function initialize() {
   serverListen();

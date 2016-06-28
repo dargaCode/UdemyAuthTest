@@ -6,6 +6,11 @@
 </head>
 <body>
 
-  <li><a href="/register">Sign Up</a></li>
-  <li><a href="/login">Log In</a></li>
-  <li><a href="/logout">Log Out</a></li>
+
+  <? if (loggedIn) { ?>
+    Hello, <?= username ?>
+    <li><a href="/logout">Log Out</a></li>
+  <? } else { ?>
+    <li><a href="/register">Sign Up</a></li>
+    <li><a href="/login">Log In</a></li>
+  <? } ?>
