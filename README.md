@@ -9,4 +9,4 @@ This was the last new topic remaining in my class, and now everything else is fo
 
 <a href="https://darga-secret-page.herokuapp.com/"><b>Live Webpage</b></a>
 
-<img src ="http://66.media.tumblr.com/065308a633fe4df754d0879c84b7fb09/tumblr_inline_oaj9xdNEdB1tvc5hi_1280.png" width=“350" height="350">
+<img src ="http://66.media.tumblr.com/065308a633fe4df754d0879c84b7fb09/tumblr_inline_oaj9xdNEdB1tvc5hi_1280.png" width="550">
